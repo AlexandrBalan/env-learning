@@ -22,6 +22,9 @@ int main()
 
     bn::fixed jump_strength = 1.3;
 
+
+    bn::fixed angle = 0;
+
     while (true)
     {
         if (bn::keypad::left_held())
@@ -46,6 +49,14 @@ int main()
             dot.set_y(FLOOR);
             dy = 0;
         }
+
+        angle += 1;
+
+        if(angle >= 360) {
+            angle = 0;
+        }
+
+        dot.set_rotation_angle(angle);
         bn::core::update();
     }
 }
